@@ -32,22 +32,29 @@ public class TTPlayerController : MonoBehaviour
     //Private Variables
     bool isGrounded;
     bool isJumping;
+    [HideInInspector] public bool canMove;
     float jumpTimeCounter;
 
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetpos.position, checkRadius, whatIsGround);
 
-        MoveInput();
+        if(canMove)
+        {
+            MoveInput();
 
-        JumpMechanics();
+            JumpMechanics();
 
-        AnimControl();
+            AnimControl();
+        }
     }
 
     private void FixedUpdate()
     {
-        MoveMechanism();
+        if(canMove)
+        {
+            MoveMechanism();
+        }
     }
 
     void MoveInput()
