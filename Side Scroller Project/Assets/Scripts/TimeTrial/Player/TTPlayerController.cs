@@ -1,103 +1,125 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class TTPlayerController : MonoBehaviour
 {
-    #region Variables
-    private PlayerInputs plyInput;
-    private InputAction plyAction;
+    [Header("Player Refrences")]
 
-    [Header("References")]
-    public Rigidbody2D rigidbody;
+    //Components
+    [SerializeField] Rigidbody2D rigidBody;
+    [SerializeField] Animator anim;
 
-    [Header("Movement Settings")]
-    public float moveSpeed;
-    float moveX;
 
-    [Header("Jump Settings")]
-    public Transform feetPos;
-    public float checkRadius;
-    public LayerMask ground;
-    public float jumpForce;
-    public float jumpTime;
-    [SerializeField] bool isGrounded;
-    [SerializeField] bool isJumping;
-    float jumpTimeCount;
-    #endregion
+    [Header("Player Movement Settings")]
 
-    #region Pre-Defined Functions
-    private void Awake()
-    {
-        plyInput = new PlayerInputs(); ;
-    }
+    //Serialize and Public Variables
+    [SerializeField] float moveSpeed;
+
+    //Private Variables
+    float moveInput;
+    bool isFacingRight = true;
+
+    [Header("Player Jump Settings")]
+
+    //Serialize and Public Variables
+    [SerializeField] Transform feetpos;
+    [SerializeField] float checkRadius;
+    [SerializeField] LayerMask whatIsGround;
+    [SerializeField] float jumpForce;
+    [SerializeField] float jumpTime;
+
+    //Private Variables
+    bool isGrounded;
+    bool isJumping;
+    float jumpTimeCounter;
 
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, ground);
+        isGrounded = Physics2D.OverlapCircle(feetpos.position, checkRadius, whatIsGround);
+
+        MoveInput();
+
+        JumpMechanics();
+
+        AnimControl();
     }
 
     private void FixedUpdate()
     {
-        moveX = plyInput.Player.Movement.ReadValue<Vector2>().x;
-        rigidbody.velocity = new Vector2(moveX * moveSpeed, rigidbody.velocity.y);
+        MoveMechanism();
     }
 
-    private void OnEnable()
+    void MoveInput()
     {
-        plyAction = plyInput.Player.Movement;
-        plyAction.Enable();
-
-        plyInput.Player.Jump.started += JumpStart;
-        plyInput.Player.Jump.performed += JumpPerform;
-        plyInput.Player.Jump.canceled += JumpCancel;
-        plyInput.Player.Jump.Enable();
+        moveInput = Input.GetAxis("Horizontal");
     }
 
-    private void OnDisable()
+    void MoveMechanism()
     {
-        plyAction.Disable();
-        plyInput.Player.Jump.Disable();
-    }
+        rigidBody.velocity = new Vector2(moveInput * moveSpeed, rigidBody.velocity.y);
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(feetPos.position, checkRadius);
-    }
-    #endregion
-
-    #region Custom Functions
-    void JumpStart(InputAction.CallbackContext obj)
-    {
-        if (isGrounded == true)
+        if (isFacingRight == false && moveInput > 0)
         {
-            isJumping = true;
-            jumpTimeCount = jumpTime;
-            rigidbody.velocity = Vector2.up * jumpForce;
+            FlipCharacter();
+        }
+        else if (isFacingRight == true && moveInput < 0)
+        {
+            FlipCharacter();
         }
     }
 
-    void JumpPerform(InputAction.CallbackContext obj)
+    void JumpMechanics()
     {
-        if (isJumping)
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            if (jumpTimeCount > 0)
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
+            rigidBody.velocity = Vector2.up * jumpForce;
+        }
+
+        if (Input.GetKey(KeyCode.Space) && isJumping)
+        {
+            if (jumpTimeCounter > 0)
             {
-                rigidbody.velocity = Vector2.up * jumpForce;
-                jumpTimeCount -= Time.deltaTime;
+                rigidBody.velocity = Vector2.up * jumpForce;
+                jumpTimeCounter -= Time.deltaTime;
             }
             else
             {
                 isJumping = false;
             }
         }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+        }
     }
 
-    void JumpCancel(InputAction.CallbackContext obj)
+    void FlipCharacter()
     {
-        isJumping = false;
+        isFacingRight = !isFacingRight;
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
-    #endregion
+
+    void AnimControl()
+    {
+        if(rigidBody.velocity != Vector2.zero)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else 
+        { 
+            anim.SetBool("isRunning", false);  
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(feetpos.position, checkRadius);
+    }
 }
