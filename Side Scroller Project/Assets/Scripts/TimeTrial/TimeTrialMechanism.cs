@@ -29,6 +29,7 @@ public class TimeTrialMechanism : MonoBehaviour
     [SerializeField] float destroyerSpeed = 5;
     [SerializeField] float displayLevelNameFor = 3;
     float timer;
+    [HideInInspector] public bool isFinished;
 
     RootNode rootNode;
 
@@ -110,7 +111,7 @@ public class TimeTrialMechanism : MonoBehaviour
 
     public Node.Status DestroyerStart()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) || isFinished)
         {
             return Node.Status.SUCCESS;
         }

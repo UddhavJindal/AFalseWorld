@@ -5,13 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class TTCollectable : MonoBehaviour
 {
-    [SerializeField] bool canPick;
+    [Header("Settings")]
+    bool canPick;
 
     private void Update()
     {
         if (canPick && Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("Portal").GetComponent<TTPortal>().currentCoins++;
+            if (GameObject.FindGameObjectWithTag("Portal").GetComponent<TTPortal>().currentCoins == GameObject.FindGameObjectWithTag("Portal").GetComponent<TTPortal>().maxCoins)
+            {
+                GameObject.FindGameObjectWithTag("Portal").GetComponent<TTPortal>().portalOpen = true;
+            }
+                Destroy(gameObject);
         }
     }
 

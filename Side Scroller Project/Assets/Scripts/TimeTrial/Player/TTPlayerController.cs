@@ -129,4 +129,9 @@ public class TTPlayerController : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(feetpos.position, checkRadius);
     }
+
+    public void OnDeath()
+    {
+        rigidBody.velocity = Vector2.zero;
+    }
 }
