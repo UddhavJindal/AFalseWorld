@@ -10,7 +10,8 @@ public class TimeTrialMechanism : MonoBehaviour
     [SerializeField] GameObject Destroyer;
     [SerializeField] GameObject PlayerUI;
     [SerializeField] GameObject LevelUI;
-
+    [SerializeField] GameObject[] Cameras;
+    
     [Header("Destroyer Points")]
     [SerializeField] Transform DestroyerInitialPoint;
     [SerializeField] Transform DestroyerFinalPoint;
@@ -104,6 +105,7 @@ public class TimeTrialMechanism : MonoBehaviour
         {
             timer = 0;
             timerStatus.text = ((int)timer).ToString();
+            StartCameraShake();
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
@@ -113,11 +115,13 @@ public class TimeTrialMechanism : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O) || isFinished)
         {
+            StopCameraShake();
             return Node.Status.SUCCESS;
         }
 
         if (Vector3.Distance(Destroyer.transform.position, DestroyerFinalPoint.transform.position) <= 0)
         {
+            StopCameraShake();
             return Node.Status.SUCCESS;
         }
         else
@@ -132,6 +136,22 @@ public class TimeTrialMechanism : MonoBehaviour
         if (treeStatus == Node.Status.RUNNING)
         {
             treeStatus = rootNode.Process();
+        }
+    }
+
+    void StartCameraShake()
+    {
+        foreach (GameObject camera in Cameras)
+        {
+            camera.GetComponent<TTCameraShake>().start = true;
+        }
+    }
+
+    void StopCameraShake()
+    {
+        foreach (GameObject camera in Cameras)
+        {
+            camera.GetComponent<TTCameraShake>().start = false;
         }
     }
 }

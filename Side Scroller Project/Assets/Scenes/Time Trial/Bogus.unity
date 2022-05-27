@@ -702,8 +702,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: BOGUS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3169f1725660e134d8cd1ceae3be00e8, type: 2}
+  m_sharedMaterial: {fileID: -2172943027502986388, guid: 3169f1725660e134d8cd1ceae3be00e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5821,13 +5821,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79acaebc6425fab48b8075db67e17eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: 1
+  start: 0
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5836,7 +5836,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 0.05
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5847,6 +5847,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   duration: 5
+  strength: 0.05
 --- !u!1 &598602056
 GameObject:
   m_ObjectHideFlags: 0
@@ -5909,15 +5910,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3169f1725660e134d8cd1ceae3be00e8, type: 2}
+  m_sharedMaterial: {fileID: -2172943027502986388, guid: 3169f1725660e134d8cd1ceae3be00e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286348543
-  m_fontColor: {r: 1, g: 0.48584908, b: 0.48584908, a: 1}
+    rgba: 4285361663
+  m_fontColor: {r: 1, g: 0.4292453, b: 0.4292453, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10892,6 +10893,8 @@ MonoBehaviour:
   Destroyer: {fileID: 1330812055}
   PlayerUI: {fileID: 1210075056}
   LevelUI: {fileID: 397731590}
+  Cameras:
+  - {fileID: 519420028}
   DestroyerInitialPoint: {fileID: 1282421488}
   DestroyerFinalPoint: {fileID: 1005338512}
   UpperTGFX: {fileID: 1558309907}

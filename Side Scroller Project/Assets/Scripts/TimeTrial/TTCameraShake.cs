@@ -7,14 +7,25 @@ public class TTCameraShake : MonoBehaviour
     public bool start = false;
     public AnimationCurve curve;
     public float duration = 1f;
+    Vector3 initialPosition;
+    [SerializeField] float strength = 1;
+
+    private void Start()
+    {
+        initialPosition = transform.position;
+    }
 
     void Update()
     {
         if (start)
         {
-            start = false;
-            StartCoroutine(Shaking());
+            ContinuousShaking();
         }
+    }
+
+    void ContinuousShaking()
+    {
+        transform.position = initialPosition + Random.insideUnitSphere * strength;
     }
 
     IEnumerator Shaking()
