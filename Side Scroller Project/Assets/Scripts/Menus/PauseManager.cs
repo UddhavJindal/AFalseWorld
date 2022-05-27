@@ -15,6 +15,7 @@ public class PauseManager : MonoBehaviour
     #region Pre-Defined Variables
     private void Start()
     {
+        Time.timeScale = 1;
         pauseMenu.SetActive(false);
     }
 

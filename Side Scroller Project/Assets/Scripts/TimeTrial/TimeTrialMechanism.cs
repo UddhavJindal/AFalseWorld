@@ -11,6 +11,11 @@ public class TimeTrialMechanism : MonoBehaviour
     [SerializeField] GameObject PlayerUI;
     [SerializeField] GameObject LevelUI;
     [SerializeField] GameObject[] Cameras;
+    [SerializeField] AudioSource audioSource;
+
+    [Header("Audio")]
+    [SerializeField] AudioClip soothingSFX;
+    [SerializeField] AudioClip energeticSFX;
     
     [Header("Destroyer Points")]
     [SerializeField] Transform DestroyerInitialPoint;
@@ -59,6 +64,7 @@ public class TimeTrialMechanism : MonoBehaviour
 
     public Node.Status MechanismSettings()
     {
+        audioSource.PlayOneShot(soothingSFX);
         timer = 0;
         timerStatus.text = ((int)timer).ToString();
         Destroyer.transform.position = DestroyerInitialPoint.transform.position;
@@ -106,6 +112,8 @@ public class TimeTrialMechanism : MonoBehaviour
             timer = 0;
             timerStatus.text = ((int)timer).ToString();
             StartCameraShake();
+            audioSource.Stop();
+            audioSource.PlayOneShot(energeticSFX);
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
