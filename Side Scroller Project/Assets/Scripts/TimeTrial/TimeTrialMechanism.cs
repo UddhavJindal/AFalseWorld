@@ -12,6 +12,7 @@ public class TimeTrialMechanism : MonoBehaviour
     [SerializeField] GameObject LevelUI;
     [SerializeField] GameObject[] Cameras;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] Animator anim;
 
     [Header("Audio")]
     [SerializeField] AudioClip soothingSFX;
@@ -78,8 +79,7 @@ public class TimeTrialMechanism : MonoBehaviour
 
     public Node.Status PlayTransition()
     {
-        UpperTGFX.position = Vector3.MoveTowards(UpperTGFX.position, UFinalPoint.position, transitionSpeed * Time.deltaTime);
-        LowerTGFX.position = Vector3.MoveTowards(LowerTGFX.position, LFinalPoint.position, transitionSpeed * Time.deltaTime);
+        anim.SetBool("isAlive", true);
         if(Vector3.Distance(UpperTGFX.position, UFinalPoint.position) <= 0 && Vector3.Distance(LowerTGFX.position, LFinalPoint.position) <= 0)
         {
             UpperTGFX.gameObject.SetActive(false);
