@@ -8,7 +8,6 @@ public class TimeTrialMechanism : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] TextMeshProUGUI timerStatus;
-    [SerializeField] GameObject Destroyer;
     [SerializeField] GameObject PlayerUI;
     [SerializeField] GameObject LevelUI;
     [SerializeField] GameObject[] Cameras;
@@ -19,21 +18,22 @@ public class TimeTrialMechanism : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip soothingSFX;
     [SerializeField] AudioClip energeticSFX;
-    
-    [Header("Destroyer Points")]
-    [SerializeField] Transform DestroyerInitialPoint;
-    [SerializeField] Transform DestroyerFinalPoint;
 
     [Header("Settings")]
     [SerializeField] float timerEndsIn;
-    [SerializeField] float destroyerSpeed = 5;
     [SerializeField] float displayLevelNameFor = 3;
     float timer;
     [HideInInspector] public bool isFinished;
     [HideInInspector] public bool isDead;
 
+    //timer calculations
+    float halfTime;
+    float oneFourthTime;
+
     //flags
     bool playerDead;
+    bool halfTimeComplete;
+    bool oneFourthTimeComplete;
 
     RootNode rootNode;
 
@@ -47,7 +47,6 @@ public class TimeTrialMechanism : MonoBehaviour
 
         Leaf mechanismSettings = new Leaf("Setting Timer Values", MechanismSettings);
         Leaf timer = new Leaf("Countdown Starts", Timer);
-        Leaf destroyerStart = new Leaf("Destroyer Starts", DestroyerStart);
         Leaf playTransition = new Leaf("Playing Transition", PlayTransition);
         Leaf displayLevelName = new Leaf("Display Level Name", DisplayLevelName);
         Leaf endingMechanism = new Leaf("Ending Mechanism", EndingMechanism);
@@ -56,7 +55,6 @@ public class TimeTrialMechanism : MonoBehaviour
         timeTrial.AddChild(playTransition);
         timeTrial.AddChild(displayLevelName);
         timeTrial.AddChild(timer);
-        timeTrial.AddChild(destroyerStart);
         timeTrial.AddChild(endingMechanism);
 
         rootNode.AddChild(timeTrial);
@@ -66,11 +64,11 @@ public class TimeTrialMechanism : MonoBehaviour
     {
         audioSource.clip = soothingSFX;
         audioSource.Play();
+        halfTime = timerEndsIn / 2;
+        oneFourthTime = timerEndsIn / 4;
         timer = 0;
         timerStatus.text = ((int)timer).ToString();
-        Destroyer.transform.position = DestroyerInitialPoint.transform.position;
         PlayerUI.SetActive(false);
-        //LevelUI.SetActive(false);
         return Node.Status.SUCCESS;
     }
 
@@ -103,41 +101,31 @@ public class TimeTrialMechanism : MonoBehaviour
         {
             timer = 0;
             timerStatus.text = ((int)timer).ToString();
-            StartCameraShake();
-            audioSource.clip = energeticSFX;
-            audioSource.Play();
-            return Node.Status.SUCCESS;
-        }
-        return Node.Status.RUNNING;
-    }
-
-    public Node.Status DestroyerStart()
-    {
-        if (Input.GetKeyDown(KeyCode.O) || isFinished)
-        {
-            isFinished = false;
-            playerDead = false;
-            
-            return Node.Status.SUCCESS;
-        }
-
-        if(isDead)
-        {
-            isDead = false;
             playerDead = true;
             return Node.Status.SUCCESS;
         }
 
-        if (Vector3.Distance(Destroyer.transform.position, DestroyerFinalPoint.transform.position) <= 0)
+        if(!halfTimeComplete && timer < halfTime)
         {
-            StopCameraShake();
+            StartCameraShake(0.03f);
+            halfTimeComplete = true;
+        }
+
+        if(!oneFourthTimeComplete && timer < oneFourthTime)
+        {
+            StartCameraShake(0.05f);
+
+            oneFourthTimeComplete = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.O) || isFinished)
+        {
+            isFinished = false;
+            playerDead = false;
             return Node.Status.SUCCESS;
         }
-        else
-        {
-            Destroyer.transform.position = Vector3.MoveTowards(Destroyer.transform.position, DestroyerFinalPoint.transform.position, destroyerSpeed * Time.deltaTime);
-            return Node.Status.RUNNING;
-        }
+
+        return Node.Status.RUNNING;
     }
 
     public Node.Status EndingMechanism()
@@ -163,6 +151,7 @@ public class TimeTrialMechanism : MonoBehaviour
 
     IEnumerator Changescene(int sceneNumber, float waitTime)
     {
+        PlayerUI.SetActive(false);
         pauseManager.canPause = false;
         StopCameraShake();
         GameObject.FindGameObjectWithTag("Player").GetComponent<TTPlayerController>().canMove = false;
@@ -172,11 +161,12 @@ public class TimeTrialMechanism : MonoBehaviour
         SceneManager.LoadScene(sceneNumber);
     }
 
-    void StartCameraShake()
+    void StartCameraShake(float strength)
     {
         foreach (GameObject camera in Cameras)
         {
             camera.GetComponent<TTCameraShake>().start = true;
+            camera.GetComponent<TTCameraShake>().strength = strength;
         }
     }
 

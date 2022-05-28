@@ -8,7 +8,7 @@ public class TTCameraShake : MonoBehaviour
     public AnimationCurve curve;
     public float duration = 1f;
     Vector3 initialPosition;
-    [SerializeField] float strength = 1;
+    public float strength = 1;
 
     private void Start()
     {
