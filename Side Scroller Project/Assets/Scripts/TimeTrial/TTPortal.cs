@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TTPortal : MonoBehaviour
 {
@@ -14,7 +13,8 @@ public class TTPortal : MonoBehaviour
     {
         if(inPortal && portalOpen && Input.GetKeyDown(KeyCode.E))
         {
-            StartCoroutine(NextScene());
+            portalOpen = false;
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<TimeTrialMechanism>().isFinished = true;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,13 +30,5 @@ public class TTPortal : MonoBehaviour
         {
             inPortal = false;
         }
-    }
-
-    IEnumerator NextScene()
-    {
-        portalOpen = false;
-        GameObject.FindGameObjectWithTag("GameManager").GetComponent<TimeTrialMechanism>().isFinished = true;
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(sceneNum);
     }
 }

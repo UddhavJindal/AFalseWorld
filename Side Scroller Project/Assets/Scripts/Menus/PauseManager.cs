@@ -10,6 +10,7 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenu;
     public KeyCode esc;
     public KeyCode pKey;
+    [HideInInspector] public bool canPause;
     #endregion
 
     #region Pre-Defined Variables
@@ -21,7 +22,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(esc) || Input.GetKeyDown(pKey))
+        if (canPause && (Input.GetKeyDown(esc) || Input.GetKeyDown(pKey)))
         {
             PauseMechanics();
         }

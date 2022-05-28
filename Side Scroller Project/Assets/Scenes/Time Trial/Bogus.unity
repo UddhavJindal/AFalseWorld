@@ -11140,7 +11140,7 @@ GameObject:
   - component: {fileID: 765938228}
   m_Layer: 5
   m_Name: PauseMenu
-  m_TagString: PauseMenu
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11209,21 +11209,16 @@ MonoBehaviour:
   - {fileID: 519420028}
   audioSource: {fileID: 927137435}
   anim: {fileID: 1720001114}
+  pauseManager: {fileID: 927137434}
   soothingSFX: {fileID: 8300000, guid: 255b79d1c7483ea488254a7a6f9419b3, type: 3}
   energeticSFX: {fileID: 8300000, guid: b949640cb013d6044b2f920cc1356fb8, type: 3}
   DestroyerInitialPoint: {fileID: 1282421488}
   DestroyerFinalPoint: {fileID: 1005338512}
-  UpperTGFX: {fileID: 1558309907}
-  LowerTGFX: {fileID: 1913615665}
-  UInitionPoint: {fileID: 499446606}
-  LInitialPoint: {fileID: 1098770341}
-  UFinalPoint: {fileID: 713518470}
-  LFinalPoint: {fileID: 1022099776}
   timerEndsIn: 5
-  transitionSpeed: 5
   destroyerSpeed: 5
   displayLevelNameFor: 2
   isFinished: 0
+  isDead: 0
   treeStatus: 1
 --- !u!4 &927137433
 Transform:
@@ -11255,6 +11250,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 765938227}
   esc: 27
   pKey: 112
+  canPause: 0
 --- !u!82 &927137435
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12122,7 +12118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38db64c2f59f43439d4a5c9ea7667cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNum: 0
 --- !u!1 &1330812055
 GameObject:
   m_ObjectHideFlags: 0
