@@ -64,7 +64,8 @@ public class TimeTrialMechanism : MonoBehaviour
 
     public Node.Status MechanismSettings()
     {
-        audioSource.PlayOneShot(soothingSFX);
+        audioSource.clip = soothingSFX;
+        audioSource.Play();
         timer = 0;
         timerStatus.text = ((int)timer).ToString();
         Destroyer.transform.position = DestroyerInitialPoint.transform.position;
@@ -112,8 +113,8 @@ public class TimeTrialMechanism : MonoBehaviour
             timer = 0;
             timerStatus.text = ((int)timer).ToString();
             StartCameraShake();
-            audioSource.Stop();
-            audioSource.PlayOneShot(energeticSFX);
+            audioSource.clip = energeticSFX;
+            audioSource.Play();
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
