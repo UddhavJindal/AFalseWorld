@@ -132,6 +132,7 @@ public class TTPlayerController : MonoBehaviour
 
     public void OnDeath()
     {
+        canMove = false;
         rigidBody.velocity = Vector2.zero;
     }
 }

@@ -17,7 +17,6 @@ public class TimeTrialMechanism : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] AudioClip soothingSFX;
-    [SerializeField] AudioClip energeticSFX;
 
     [Header("Settings")]
     [SerializeField] float timerEndsIn;
@@ -86,7 +85,7 @@ public class TimeTrialMechanism : MonoBehaviour
             timer = timerEndsIn;
             LevelUI.SetActive(false);
             PlayerUI.SetActive(true);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<TTPlayerController>().canMove = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<TTPlayerController>().OnDeath();
             pauseManager.canPause = true;
             return Node.Status.SUCCESS;
         }
@@ -114,7 +113,6 @@ public class TimeTrialMechanism : MonoBehaviour
         if(!oneFourthTimeComplete && timer < oneFourthTime)
         {
             StartCameraShake(0.05f);
-
             oneFourthTimeComplete = true;
         }
 
@@ -154,7 +152,6 @@ public class TimeTrialMechanism : MonoBehaviour
         PlayerUI.SetActive(false);
         pauseManager.canPause = false;
         StopCameraShake();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<TTPlayerController>().canMove = false;
         GameObject.FindGameObjectWithTag("Player").GetComponent<TTPlayerController>().OnDeath();
         anim.SetBool("isAlive", false);
         yield return new WaitForSeconds(waitTime);
