@@ -32,7 +32,7 @@ public class TTPlayerController : MonoBehaviour
     //Private Variables
     bool isGrounded;
     bool isJumping;
-    [HideInInspector] public bool canMove;
+    public bool canMove;
     float jumpTimeCounter;
 
     private void Update()

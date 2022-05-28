@@ -85,7 +85,7 @@ public class TimeTrialMechanism : MonoBehaviour
             timer = timerEndsIn;
             LevelUI.SetActive(false);
             PlayerUI.SetActive(true);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<TTPlayerController>().OnDeath();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<TTPlayerController>().canMove = true;
             pauseManager.canPause = true;
             return Node.Status.SUCCESS;
         }
