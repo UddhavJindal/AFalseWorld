@@ -13,6 +13,7 @@ public class TTColorChanger : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] float changeTimer;
+    [SerializeField] Transform spawnPoint;
 
     float timer;
     float waitTime;
@@ -53,13 +54,24 @@ public class TTColorChanger : MonoBehaviour
                 canDamage = true;
             }
         }
+        if(canDamage)
+        {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+        else
+        {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(canDamage)
+        if(collision.gameObject.tag == "Player")
         {
-
+            if(canDamage)
+            {
+                collision.transform.position = spawnPoint.position;
+            }
         }
     }
 }
