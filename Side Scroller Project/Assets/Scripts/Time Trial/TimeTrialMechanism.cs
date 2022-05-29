@@ -14,6 +14,10 @@ public class TimeTrialMechanism : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] Animator anim;
     [SerializeField] PauseManager pauseManager;
+    [SerializeField] GameObject ExitMenu;
+    [SerializeField] TextMeshProUGUI timeCurrent;
+    [SerializeField] TextMeshProUGUI timeBest;
+
 
     [Header("Audio")]
     [SerializeField] AudioClip soothingSFX;
@@ -28,6 +32,9 @@ public class TimeTrialMechanism : MonoBehaviour
     //timer calculations
     float halfTime;
     float oneFourthTime;
+
+    //values
+    float currentTime;
 
     //flags
     bool playerDead;
@@ -68,6 +75,7 @@ public class TimeTrialMechanism : MonoBehaviour
         timer = 0;
         timerStatus.text = ((int)timer).ToString();
         PlayerUI.SetActive(false);
+        ExitMenu.SetActive(false);
         return Node.Status.SUCCESS;
     }
 
@@ -98,9 +106,10 @@ public class TimeTrialMechanism : MonoBehaviour
         timerStatus.text = ((int)timer).ToString();
         if (timer < 0)
         {
+            playerDead = true;
             timer = 0;
             timerStatus.text = ((int)timer).ToString();
-            playerDead = true;
+            currentTime = timer;
             return Node.Status.SUCCESS;
         }
 
@@ -118,6 +127,7 @@ public class TimeTrialMechanism : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.O) || isFinished)
         {
+            currentTime = timer;
             isFinished = false;
             playerDead = false;
             return Node.Status.SUCCESS;
@@ -149,13 +159,14 @@ public class TimeTrialMechanism : MonoBehaviour
 
     IEnumerator Changescene(int sceneNumber, float waitTime)
     {
+        timeCurrent.text = (timerEndsIn - currentTime).ToString();
         PlayerUI.SetActive(false);
         pauseManager.canPause = false;
         StopCameraShake();
         GameObject.FindGameObjectWithTag("Player").GetComponent<TTPlayerController>().OnDeath();
         anim.SetBool("isAlive", false);
         yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene(sceneNumber);
+        ExitMenu.SetActive(true);
     }
 
     void StartCameraShake(float strength)
