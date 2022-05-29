@@ -18,6 +18,15 @@ public class TimeTrialMechanism : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeCurrent;
     [SerializeField] TextMeshProUGUI timeBest;
 
+    [Header("Save Settings")]
+    [SerializeField] string SaveFileName;
+
+    [Header("Scene Settings")]
+    [SerializeField] int NextScene;
+    [SerializeField] int PreviousScene;
+    [SerializeField] int CurrentScene;
+    [SerializeField] int MainMenuScene;
+
 
     [Header("Audio")]
     [SerializeField] AudioClip soothingSFX;
@@ -47,6 +56,8 @@ public class TimeTrialMechanism : MonoBehaviour
 
     private void Start()
     {
+        SavingValues();
+
         rootNode = new RootNode();
 
         Sequence timeTrial = new Sequence("Time Trial Mechanism");
@@ -159,7 +170,7 @@ public class TimeTrialMechanism : MonoBehaviour
 
     IEnumerator Changescene(int sceneNumber, float waitTime)
     {
-        timeCurrent.text = (timerEndsIn - currentTime).ToString();
+        ExitMenuSettings();
         PlayerUI.SetActive(false);
         pauseManager.canPause = false;
         StopCameraShake();
@@ -167,6 +178,28 @@ public class TimeTrialMechanism : MonoBehaviour
         anim.SetBool("isAlive", false);
         yield return new WaitForSeconds(waitTime);
         ExitMenu.SetActive(true);
+    }
+
+    void ExitMenuSettings()
+    {
+        timeCurrent.text = (timerEndsIn - currentTime).ToString("n2");
+        if((timerEndsIn-currentTime) < PlayerPrefs.GetFloat(SaveFileName))
+        {
+            PlayerPrefs.SetFloat(SaveFileName, timerEndsIn - currentTime);
+            timeBest.text = PlayerPrefs.GetFloat(SaveFileName).ToString("n2");
+        }
+        else
+        {
+            timeBest.text = PlayerPrefs.GetFloat(SaveFileName).ToString("n2");
+        }
+    }
+
+    void SavingValues()
+    {
+        if(PlayerPrefs.GetFloat(SaveFileName) <= 0)
+        {
+            PlayerPrefs.SetFloat(SaveFileName, timerEndsIn);
+        }
     }
 
     void StartCameraShake(float strength)
@@ -184,5 +217,25 @@ public class TimeTrialMechanism : MonoBehaviour
         {
             camera.GetComponent<TTCameraShake>().start = false;
         }
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(CurrentScene);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(NextScene);
+    }
+
+    public void PreviousLevel()
+    {
+        SceneManager.LoadScene(PreviousScene);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(MainMenuScene);
     }
 }
