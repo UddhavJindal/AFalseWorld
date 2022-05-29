@@ -54,24 +54,24 @@ public class TTColorChanger : MonoBehaviour
                 canDamage = true;
             }
         }
-        if(canDamage)
+        /*if(canDamage)
         {
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
         else
         {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-        }
+        }*/
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            if(canDamage)
+            if (canDamage)
             {
                 collision.transform.position = spawnPoint.position;
             }
-        }
+        }  
     }
 }

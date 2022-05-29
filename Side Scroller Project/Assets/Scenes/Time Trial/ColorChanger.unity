@@ -897,7 +897,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: COLOR CHANGER
+  m_text: TAKE YOUR EYES OFF
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3169f1725660e134d8cd1ceae3be00e8, type: 2}
   m_sharedMaterial: {fileID: -2172943027502986388, guid: 3169f1725660e134d8cd1ceae3be00e8, type: 2}
@@ -13395,6 +13395,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1944147416}
     m_Modifications:
+    - target: {fileID: 996903372, guid: de4a7491a6ea5774b8c8ade13024c551, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1672801041}
     - target: {fileID: 2120778561556361929, guid: de4a7491a6ea5774b8c8ade13024c551, type: 3}
       propertyPath: m_IsTrigger
       value: 1
