@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TTRotator : MonoBehaviour
+public class TTColorChanger : MonoBehaviour
 {
     [Header("Refrences")]
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -19,19 +19,28 @@ public class TTRotator : MonoBehaviour
 
     bool isSafe;
     bool canDamage;
+    [SerializeField] bool isDelayed;
 
     private void Start()
     {
+        if(isDelayed)
+        {
+            timer = waitTime;
+        }
+        else
+        {
+            timer = 0;
+        }
         waitTime = changeTimer;
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer > waitTime)
+        if (timer > waitTime)
         {
             timer = 0;
-            if(isSafe)
+            if (isSafe)
             {
                 spriteRenderer.sprite = SafePlatformSprite;
                 isSafe = false;
