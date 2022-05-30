@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class MenuUiManager : MonoBehaviour
 {
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
