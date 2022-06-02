@@ -6,21 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitlePage.unity
-    guid: 491af785f075f374ba6ae67dd1922e53
-  - enabled: 1
-    path: Assets/Scenes/Time Trial/Bogus.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/Unfair/Unfair L1.unity
-    guid: 42480605612fd7743add3b9e9e017a2f
-  - enabled: 1
-    path: Assets/Scenes/Unfair/Unfair L2.unity
-    guid: 2df4f47b7bf5df2478f983caee05eb9b
-  - enabled: 1
-    path: Assets/Scenes/Unfair/Unfair L3.unity
-    guid: a2cd6cfac2bc37d4faa96b955389d411
-  - enabled: 1
-    path: Assets/Scenes/Unfair/Unfair L4.unity
-    guid: e0ba500a7da7f914b80dc9982751c20f
+    path: Assets/Scenes/Menus/DMenu.unity
+    guid: d9e27b830e5f6854bb9fa3f6abe3b832
   m_configObjects: {}
