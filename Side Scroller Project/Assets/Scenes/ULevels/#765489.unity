@@ -1199,6 +1199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 694725441}
+  deathParticleSYstem: {fileID: 1913332312316479393, guid: 94133a32e57b2164da52fcc95897ce73, type: 3}
 --- !u!4 &694725441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4344441054338454369, guid: 31cddb7d63a088240b160cacedcf635a, type: 3}

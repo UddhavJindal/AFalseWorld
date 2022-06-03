@@ -6,31 +6,43 @@ public class TTColorChanger : MonoBehaviour
 {
     [Header("Refrences")]
     [SerializeField] SpriteRenderer spriteRenderer;
-    
+
     [Header("Components")]
-    [SerializeField] Sprite SafePlatformSprite;
-    [SerializeField] Sprite UnSafePlatformSprite;
+    [SerializeField] Color32 safeColor;
+    [SerializeField] Color32 triggerColer;
+    [SerializeField] Collider2D collider;
 
     [Header("Settings")]
     [SerializeField] float changeTimer;
-    [SerializeField] Transform spawnPoint;
 
     float timer;
     float waitTime;
 
-    bool isSafe;
-    bool canDamage;
+    [SerializeField] bool isSafe;
     [SerializeField] bool isDelayed;
 
     private void Start()
     {
-        if(isDelayed)
+        /*if(isDelayed)
         {
-            timer = waitTime;
+            isSafe = false;
         }
         else
         {
-            timer = 0;
+            isSafe = false;
+        }*/
+
+        if (isSafe)
+        {
+            spriteRenderer.color = safeColor;
+            collider.enabled = true;
+            isSafe = false;
+        }
+        else
+        {
+            spriteRenderer.color = triggerColer;
+            collider.enabled = false;
+            isSafe = true;
         }
         waitTime = changeTimer;
     }
@@ -43,35 +55,16 @@ public class TTColorChanger : MonoBehaviour
             timer = 0;
             if (isSafe)
             {
-                spriteRenderer.sprite = SafePlatformSprite;
+                spriteRenderer.color = safeColor;
+                collider.enabled = true;
                 isSafe = false;
-                canDamage = false;
             }
             else
             {
-                spriteRenderer.sprite = UnSafePlatformSprite;
+                spriteRenderer.color = triggerColer;
+                collider.enabled = false;
                 isSafe = true;
-                canDamage = true;
             }
         }
-        /*if(canDamage)
-        {
-            //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-        }
-        else
-        {
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-        }*/
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            if (canDamage)
-            {
-                collision.transform.position = spawnPoint.position;
-            }
-        }  
     }
 }
