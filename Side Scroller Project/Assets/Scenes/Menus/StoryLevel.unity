@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887fe4f51691f334da60b2b427392f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: '#588769'
+  sceneName: SM_#04
 --- !u!212 &133591161
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -668,7 +668,6 @@ MonoBehaviour:
   activeColor:
     serializedVersion: 2
     rgba: 4285361663
-  sceneName: DMenu
 --- !u!61 &139471879
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1006,7 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887fe4f51691f334da60b2b427392f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: '#456387'
+  sceneName: SM_#03
 --- !u!212 &241696543
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1248,7 +1247,6 @@ MonoBehaviour:
   activeColor:
     serializedVersion: 2
     rgba: 4285361663
-  sceneName: DMenu
 --- !u!61 &499915251
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1275,6 +1273,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &502467297
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5032546933643833418, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_Name
+      value: BoombasticMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
 --- !u!1 &531451840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,7 +1761,6 @@ MonoBehaviour:
   activeColor:
     serializedVersion: 2
     rgba: 4285361663
-  sceneName: DMenu
 --- !u!61 &675408597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2021,7 +2075,6 @@ MonoBehaviour:
   activeColor:
     serializedVersion: 2
     rgba: 4285361663
-  sceneName: DMenu
 --- !u!61 &804373567
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2751,7 +2804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887fe4f51691f334da60b2b427392f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: '#276834'
+  sceneName: SM_#08
 --- !u!212 &1123056579
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2882,7 +2935,6 @@ MonoBehaviour:
   activeColor:
     serializedVersion: 2
     rgba: 4285361663
-  sceneName: DMenu
 --- !u!61 &1125727688
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2956,7 +3008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887fe4f51691f334da60b2b427392f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: '#976482'
+  sceneName: SM_#05
 --- !u!212 &1184552606
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3509,7 +3561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887fe4f51691f334da60b2b427392f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: '#356748'
+  sceneName: SM_#06
 --- !u!212 &1359393696
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3640,7 +3692,6 @@ MonoBehaviour:
   activeColor:
     serializedVersion: 2
     rgba: 4285361663
-  sceneName: DMenu
 --- !u!61 &1376738222
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3784,7 +3835,6 @@ MonoBehaviour:
   activeColor:
     serializedVersion: 2
     rgba: 4285361663
-  sceneName: DMenu
 --- !u!61 &1506169440
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3858,7 +3908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887fe4f51691f334da60b2b427392f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: '#276834'
+  sceneName: SM_#07
 --- !u!212 &1511386673
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4426,7 +4476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887fe4f51691f334da60b2b427392f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: '#000001'
+  sceneName: SM_#01
 --- !u!212 &1817664686
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4557,7 +4607,6 @@ MonoBehaviour:
   activeColor:
     serializedVersion: 2
     rgba: 4285361663
-  sceneName: DMenu
 --- !u!61 &1823398836
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4631,7 +4680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887fe4f51691f334da60b2b427392f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: '#675936'
+  sceneName: SM_#02
 --- !u!212 &1832339802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5168,7 +5217,6 @@ MonoBehaviour:
   activeColor:
     serializedVersion: 2
     rgba: 4285361663
-  sceneName: DMenu
 --- !u!61 &2119412744
 BoxCollider2D:
   m_ObjectHideFlags: 0
