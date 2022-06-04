@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ShowPanel : MonoBehaviour
+public class NextScene : MonoBehaviour
 {
-    public GameObject openPanel;
-    public GameObject closePanel;
+    public string sceneName;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            openPanel.SetActive(true);
-            closePanel.SetActive(false);
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
