@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/ModesMenu.unity
     guid: e5f1bde53474a3f46bd32b71661cbec3
   - enabled: 1
+    path: Assets/Scenes/Menus/StoryLevel.unity
+    guid: 97330f688f97b154e89a4d219bf62c16
+  - enabled: 1
+    path: Assets/Scenes/Menus/TimeTrailLevel.unity
+    guid: f035c321e0cf5d544b2c90e5481c4195
+  - enabled: 1
     path: Assets/Scenes/ULevels/#276834.unity
     guid: 164c8948381935742a5f6af670340f71
   - enabled: 1
@@ -32,4 +38,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ULevels/#976482.unity
     guid: b1d61d8e2d4112649ad679049bcae9df
+  - enabled: 1
+    path: Assets/Scenes/Time Trial/ColorChanger.unity
+    guid: 821988f5e6916dc46a0218940e9b8817
+  - enabled: 1
+    path: Assets/Scenes/Time Trial/Jumper.unity
+    guid: 07dcf755a98f5a34aaddcc08ea0227d9
+  - enabled: 1
+    path: Assets/Scenes/Time Trial/Level Spike.unity
+    guid: 0a34775f5479ffe4fba1d79830e51d91
+  - enabled: 1
+    path: Assets/Scenes/Time Trial/MultiColor.unity
+    guid: 44b318f86444f0d4fbb034cfbb668e81
   m_configObjects: {}

@@ -12,23 +12,9 @@ public class DBlockSceneChanger : MonoBehaviour
     [SerializeField] Color32 idleColor;
     [SerializeField] Color32 activeColor;
 
-    [Header("Settings")]
-    [SerializeField] string sceneName;
-
-    //flag
-    bool canChangeScene;
-
     private void Start()
     {
         card.color = idleColor;
-    }
-
-    private void Update()
-    {
-        if (canChangeScene && Input.GetKeyDown(KeyCode.E))
-        {
-            SceneManager.LoadScene(sceneName);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,7 +22,6 @@ public class DBlockSceneChanger : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             card.color = activeColor;
-            canChangeScene = true;
         }
     }
 
@@ -45,7 +30,6 @@ public class DBlockSceneChanger : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             card.color = idleColor;
-            canChangeScene = false;
         }
     }
 }
