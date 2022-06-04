@@ -10,7 +10,7 @@ public class TTColorChanger : MonoBehaviour
     [Header("Components")]
     [SerializeField] Color32 safeColor;
     [SerializeField] Color32 triggerColer;
-    [SerializeField] Collider2D collider;
+    [SerializeField] Collider2D Ucollider;
 
     [Header("Settings")]
     [SerializeField] float changeTimer;
@@ -35,13 +35,13 @@ public class TTColorChanger : MonoBehaviour
         if (isSafe)
         {
             spriteRenderer.color = safeColor;
-            collider.enabled = true;
+            Ucollider.enabled = true;
             isSafe = false;
         }
         else
         {
             spriteRenderer.color = triggerColer;
-            collider.enabled = false;
+            Ucollider.enabled = false;
             isSafe = true;
         }
         waitTime = changeTimer;
@@ -56,13 +56,13 @@ public class TTColorChanger : MonoBehaviour
             if (isSafe)
             {
                 spriteRenderer.color = safeColor;
-                collider.enabled = true;
+                Ucollider.enabled = true;
                 isSafe = false;
             }
             else
             {
                 spriteRenderer.color = triggerColer;
-                collider.enabled = false;
+                Ucollider.enabled = false;
                 isSafe = true;
             }
         }
