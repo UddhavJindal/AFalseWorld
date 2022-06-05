@@ -12,6 +12,7 @@ public class UDoor : MonoBehaviour
     [Header("Settings")]
     [SerializeField] string sceneName;
     [SerializeField] float changeSceneIn;
+    [SerializeField] float noOfBooms;
 
     //flag
     bool canOpenDoor;
@@ -24,7 +25,7 @@ public class UDoor : MonoBehaviour
         {
             doorClosed = false;
             Destroy(Player.gameObject);
-            InstantiatingParticleSystem();
+            StartCoroutine(Instancy());
             StartCoroutine(ChangeScene());
         }
     }
@@ -45,6 +46,15 @@ public class UDoor : MonoBehaviour
         }
     }
 
+    IEnumerator Instancy()
+    {
+        for (int i = 0; i < noOfBooms; i++)
+        {
+            InstantiatingParticleSystem();
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(changeSceneIn);
@@ -53,7 +63,8 @@ public class UDoor : MonoBehaviour
 
     void InstantiatingParticleSystem()
     {
-        var Instance = Instantiate(endBoom, Player.transform.position, Quaternion.identity);
+        Vector3 rand = transform.position + Random.insideUnitSphere;
+        var Instance = Instantiate(endBoom, new Vector3(rand.x, rand.y, transform.position.z), Quaternion.identity);
         Destroy(Instance.gameObject, 1);
     }
 }

@@ -78,6 +78,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   sceneName: 
   changeSceneIn: 1.5
+  noOfBooms: 3
 --- !u!1 &1269331394485811230
 GameObject:
   m_ObjectHideFlags: 0

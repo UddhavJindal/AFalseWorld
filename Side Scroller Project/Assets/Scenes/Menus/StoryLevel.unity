@@ -1284,6 +1284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoombasticMusic
       objectReference: {fileID: 0}
+    - target: {fileID: 5032546933643833419, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 27b4f8ff30672914c85f75c59e158d66, type: 3}
     - target: {fileID: 5032546933643833428, guid: a77e6a0fe7ba7e04ea847563acd3ab7d, type: 3}
       propertyPath: m_RootOrder
       value: 6
