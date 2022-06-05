@@ -76,8 +76,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endBoom: {fileID: 1913332312316479393, guid: 06dda3f9f74cd8f499a0df01858ddcb8, type: 3}
   Player: {fileID: 0}
+  souldClips:
+  - {fileID: 8300000, guid: 5007d29765d3b4b41bd2f4a183d8e28f, type: 3}
+  - {fileID: 8300000, guid: 6c18146f995b5f648ad7e6de50f58d11, type: 3}
+  - {fileID: 8300000, guid: 1f342f2c2d894b44ab239017f08bc575, type: 3}
+  - {fileID: 8300000, guid: 8f899014339f7014589ea9d357603f4f, type: 3}
+  - {fileID: 8300000, guid: 1a15b3de42027ff4cb12b279b9481c6f, type: 3}
+  - {fileID: 8300000, guid: e5f8531fe14d7c74f915f6ff69cc492d, type: 3}
+  - {fileID: 8300000, guid: 28710697cf5a9f943bb0d0fe64c3f1fa, type: 3}
+  - {fileID: 8300000, guid: 880a736acc78d3e47b96f2753b5fa2ee, type: 3}
+  - {fileID: 8300000, guid: 71d062cf6aa5da2418ef6602465a3cd9, type: 3}
+  - {fileID: 8300000, guid: 6d8ab702464c7da4e8ae8f79d6ff9ee2, type: 3}
   sceneName: 
-  changeSceneIn: 1.5
+  changeSceneIn: 3.5
   noOfBooms: 3
 --- !u!1 &1269331394485811230
 GameObject:

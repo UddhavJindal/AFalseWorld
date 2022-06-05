@@ -9,10 +9,14 @@ public class UDoor : MonoBehaviour
     [SerializeField] ParticleSystem endBoom;
     [SerializeField] GameObject Player;
 
+    [SerializeField] AudioClip[] souldClips;
+
     [Header("Settings")]
     [SerializeField] string sceneName;
     [SerializeField] float changeSceneIn;
     [SerializeField] float noOfBooms;
+
+    
 
     //flag
     bool canOpenDoor;
@@ -27,6 +31,9 @@ public class UDoor : MonoBehaviour
             Destroy(Player.gameObject);
             StartCoroutine(Instancy());
             StartCoroutine(ChangeScene());
+
+            GameObject.FindGameObjectWithTag("DMSource").GetComponent<AudioSource>().clip = souldClips[Random.Range(0, souldClips.Length)];
+            GameObject.FindGameObjectWithTag("DMSource").GetComponent<AudioSource>().Play();
         }
     }
 

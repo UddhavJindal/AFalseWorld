@@ -10,7 +10,7 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenu;
     public KeyCode esc;
     public KeyCode pKey;
-    [HideInInspector] public bool canPause;
+    public bool canPause;
     #endregion
 
     #region Pre-Defined Variables
