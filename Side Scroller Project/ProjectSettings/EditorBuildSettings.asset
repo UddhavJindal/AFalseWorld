@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitlePage.unity
+    guid: 491af785f075f374ba6ae67dd1922e53
+  - enabled: 1
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: d9e27b830e5f6854bb9fa3f6abe3b832
   - enabled: 1
@@ -50,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Time Trial/TT_#04.unity
     guid: 44b318f86444f0d4fbb034cfbb668e81
+  - enabled: 1
+    path: Assets/Scenes/Story Mode/SM_#01.unity
+    guid: 7ff90baaa8686734ab9c5dc455dc87e9
   m_configObjects: {}

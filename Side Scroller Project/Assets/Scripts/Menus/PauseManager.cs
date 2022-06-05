@@ -11,6 +11,8 @@ public class PauseManager : MonoBehaviour
     public KeyCode esc;
     public KeyCode pKey;
     public bool canPause;
+    [SerializeField] AudioClip pauseMenuSound;
+    [SerializeField] AudioSource audioSource;
     #endregion
 
     #region Pre-Defined Variables
@@ -24,6 +26,10 @@ public class PauseManager : MonoBehaviour
     {
         if (canPause && (Input.GetKeyDown(esc) || Input.GetKeyDown(pKey)))
         {
+            if(pauseMenuSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(pauseMenuSound);
+            }
             PauseMechanics();
         }
     }
