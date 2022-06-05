@@ -8,10 +8,12 @@ public class TitleManager : MonoBehaviour
 {
     [Header("Componenets")]
     [SerializeField] TextMeshProUGUI GameTitle;
+    [SerializeField] TextMeshProUGUI WarningTitle;
+    [SerializeField] TextMeshProUGUI KeyStatus;
 
     [Header("Settings")]
     [SerializeField] float fadeSpeed;
-    [SerializeField] int SceneNumber;
+    [SerializeField] string SceneNumber;
 
     float currentAlphaValue;
     float maxAlphaValue;
@@ -28,15 +30,21 @@ public class TitleManager : MonoBehaviour
 
         Leaf starters = new Leaf("Starters", Starters);
         Leaf titleFade = new Leaf("Fading Title", TitleFade);
+        Leaf disclaimer = new Leaf("Fading Title", Disclaimer);
+        Leaf waitToStart = new Leaf("Wait", WaitToChangeScene);
 
         titleManager.AddChild(starters);
         titleManager.AddChild(titleFade);
+        titleManager.AddChild(disclaimer);
+        titleManager.AddChild(waitToStart);
 
         rootNode.AddChild(titleManager);
     }
 
     public Node.Status Starters()
     {
+        KeyStatus.gameObject.SetActive(false);
+        WarningTitle.gameObject.SetActive(false);
         GameTitle.alpha = 0;
         currentAlphaValue = 0;
         maxAlphaValue = 1;
@@ -49,8 +57,31 @@ public class TitleManager : MonoBehaviour
         GameTitle.alpha = currentAlphaValue;
         if(currentAlphaValue >= maxAlphaValue)
         {
-            SceneManager.LoadScene(SceneNumber);
+            currentAlphaValue = 0;
+            GameTitle.gameObject.SetActive(false);
+            WarningTitle.gameObject.SetActive(true);
             return Node.Status.SUCCESS;
+        }
+        return Node.Status.RUNNING;
+    }
+
+    public Node.Status Disclaimer()
+    {
+        currentAlphaValue += Time.deltaTime * fadeSpeed;
+        WarningTitle.alpha = currentAlphaValue;
+        if (currentAlphaValue >= maxAlphaValue)
+        {
+            KeyStatus.gameObject.SetActive(true);
+            return Node.Status.SUCCESS;
+        }
+        return Node.Status.RUNNING;
+    }
+
+    public Node.Status WaitToChangeScene()
+    {
+        if(Input.anyKey)
+        {
+            SceneManager.LoadScene(SceneNumber);
         }
         return Node.Status.RUNNING;
     }

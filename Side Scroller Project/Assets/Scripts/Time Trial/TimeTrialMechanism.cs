@@ -22,10 +22,10 @@ public class TimeTrialMechanism : MonoBehaviour
     [SerializeField] string SaveFileName;
 
     [Header("Scene Settings")]
-    [SerializeField] int NextScene;
-    [SerializeField] int PreviousScene;
-    [SerializeField] int CurrentScene;
-    [SerializeField] int MainMenuScene;
+    [SerializeField] string NextScene;
+    [SerializeField] string PreviousScene;
+    [SerializeField] string CurrentScene;
+    [SerializeField] string MainMenuScene;
 
 
     [Header("Audio")]
