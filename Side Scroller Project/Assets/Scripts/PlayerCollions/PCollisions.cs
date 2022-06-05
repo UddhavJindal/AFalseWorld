@@ -8,6 +8,8 @@ public class PCollisions : MonoBehaviour
     [SerializeField] ParticleSystem deathParticleSYstem;
     [SerializeField] GameObject deathCounter;
 
+    [SerializeField] GameObject[] Cameras;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Obstacles")
@@ -17,6 +19,13 @@ public class PCollisions : MonoBehaviour
             Instantiate(deathCounter, transform.position, Quaternion.identity);
             Destroy(Instance.gameObject, 0.5f);
             transform.position = SpawnPoint.position;
+            if(Cameras != null)
+            {
+                foreach(var camera in Cameras)
+                {
+                    camera.GetComponent<NormalCameraShake>().start = true;
+                }
+            }
         }
     }
 }
