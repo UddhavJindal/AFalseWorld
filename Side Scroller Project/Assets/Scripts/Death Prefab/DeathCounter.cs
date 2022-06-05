@@ -8,6 +8,8 @@ public class DeathCounter : MonoBehaviour
     [SerializeField] TextMeshPro text;
     [SerializeField] float Speed;
 
+    [SerializeField] AudioClip[] souldClips;
+
     float currentAlphaValue;
 
     int noOfDeaths;
@@ -18,6 +20,8 @@ public class DeathCounter : MonoBehaviour
         currentAlphaValue = text.alpha;
         noOfDeaths = PlayerPrefs.GetInt("DeathCounter");
         text.text = noOfDeaths.ToString();
+        GameObject.FindGameObjectWithTag("DMSource").GetComponent<AudioSource>().clip = souldClips[Random.Range(0, souldClips.Length)];
+        GameObject.FindGameObjectWithTag("DMSource").GetComponent<AudioSource>().Play();
     }
 
     private void Update()

@@ -8,6 +8,7 @@ TagManager:
   - Portal
   - PauseMenu
   - Obstacles
+  - DMSource
   layers:
   - Default
   - TransparentFX

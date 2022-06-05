@@ -187,3 +187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 4667682736177545520}
   Speed: 0.5
+  souldClips:
+  - {fileID: 8300000, guid: ecd21f15239f06143b1cf34d5e206afa, type: 3}
+  - {fileID: 8300000, guid: e1c9173f0d861da428eda774b28354d0, type: 3}
+  - {fileID: 8300000, guid: 677429416e1604a4a9788543232dda21, type: 3}
+  - {fileID: 8300000, guid: 8b2758abc827f1b418334bf5e8756733, type: 3}
+  - {fileID: 8300000, guid: 41e0daf91c0df384f90448fc90763dc8, type: 3}
+  - {fileID: 8300000, guid: f3a725577319806448246cc8aa708095, type: 3}
+  - {fileID: 8300000, guid: 750505785cc5fc44ea7b08e778e8340b, type: 3}
