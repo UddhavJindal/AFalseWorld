@@ -9,6 +9,8 @@ TagManager:
   - PauseMenu
   - Obstacles
   - DMSource
+  - Boss
+  - Wall
   layers:
   - Default
   - TransparentFX

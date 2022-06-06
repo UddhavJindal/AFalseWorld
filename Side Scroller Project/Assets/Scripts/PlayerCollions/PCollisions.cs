@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PCollisions : MonoBehaviour
 {
+    [SerializeField] GameObject Boss;
+
     [SerializeField] Transform SpawnPoint;
     [SerializeField] ParticleSystem deathParticleSYstem;
     [SerializeField] GameObject deathCounter;
@@ -14,17 +16,30 @@ public class PCollisions : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacles")
         {
-            PlayerPrefs.SetInt("DeathCounter", PlayerPrefs.GetInt("DeathCounter") + 1);
-            var Instance = Instantiate(deathParticleSYstem, transform.position, Quaternion.identity);
-            Instantiate(deathCounter, transform.position, Quaternion.identity);
-            Destroy(Instance.gameObject, 0.5f);
-            transform.position = SpawnPoint.position;
-            if(Cameras != null)
+            Death();
+        }
+
+        if (collision.gameObject.tag == "Boss")
+        {
+            if (Boss != null)
             {
-                foreach(var camera in Cameras)
-                {
-                    camera.GetComponent<NormalCameraShake>().start = true;
-                }
+                Death();
+            }
+        }
+    }
+
+    void Death()
+    {
+        PlayerPrefs.SetInt("DeathCounter", PlayerPrefs.GetInt("DeathCounter") + 1);
+        var Instance = Instantiate(deathParticleSYstem, transform.position, Quaternion.identity);
+        Instantiate(deathCounter, transform.position, Quaternion.identity);
+        Destroy(Instance.gameObject, 0.5f);
+        transform.position = SpawnPoint.position;
+        if (Cameras != null)
+        {
+            foreach (var camera in Cameras)
+            {
+                camera.GetComponent<NormalCameraShake>().start = true;
             }
         }
     }

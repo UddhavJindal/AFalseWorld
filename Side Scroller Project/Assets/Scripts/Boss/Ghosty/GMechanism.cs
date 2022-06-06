@@ -8,14 +8,22 @@ public class GMechanism : MonoBehaviour
     [SerializeField] GameObject CameraZoomedOut;
     [SerializeField] GameObject CameraZoomedIn;
     [SerializeField] GameObject ThreeMuskets;
+    [SerializeField] Collider2D bossCollider;
+    [SerializeField] GameObject Player;
 
     [Header("Refrences")]
     [SerializeField] GMovement gMovementScript;
     [SerializeField] GThreeMuskets gThreeMusketsScript;
     [SerializeField] Animator ghostAnim;
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioSource bossSource;
+
+    [Header("Sounds")]
+    [SerializeField] AudioClip BossRoar;
+    [SerializeField] AudioClip BossMusicOne;
 
     [Header("Bools")]
-    [SerializeField] bool canStart;
+    public bool canStart;
     [SerializeField] bool canStartMechanismTwo;
 
     [Header("Settings")]
@@ -61,6 +69,7 @@ public class GMechanism : MonoBehaviour
 
     public Node.Status InitialSettings()
     {
+        bossCollider.enabled = false;
         gMovementScript.enabled = false;
         gThreeMusketsScript.enabled = false;
         CameraZoomedIn.SetActive(false);
@@ -73,6 +82,8 @@ public class GMechanism : MonoBehaviour
         {
             CameraZoomedIn.SetActive(true);
             CameraZoomedOut.SetActive(false);
+            Player.GetComponent<TTPlayerController>().canMove = false;
+            Player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
@@ -92,6 +103,8 @@ public class GMechanism : MonoBehaviour
 
     public Node.Status GhostRoar()
     {
+        bossSource.clip = BossRoar;
+        bossSource.Play();
         CMShakeScript.Instance.CameraShake(RoarIntensity, RoarTime);
         return Node.Status.SUCCESS;
     }
@@ -101,6 +114,8 @@ public class GMechanism : MonoBehaviour
         timer += Time.deltaTime;
         if(timer > 3)
         {
+            source.clip = BossMusicOne;
+            source.Play();
             timer = 0;
             ghostAnim.SetBool("IsIdling", true);
             CameraZoomedIn.SetActive(false);
@@ -112,6 +127,8 @@ public class GMechanism : MonoBehaviour
 
     public Node.Status StartingMovement()
     {
+        Player.GetComponent<TTPlayerController>().canMove = true;
+        bossCollider.enabled = true;
         gMovementScript.enabled = true;
         return Node.Status.SUCCESS;
     }
@@ -120,6 +137,8 @@ public class GMechanism : MonoBehaviour
     {
         if(canStartMechanismTwo)
         {
+            Player.GetComponent<TTPlayerController>().canMove = false;
+            Player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             ghostAnim.SetBool("IsIdling", false);
             CameraZoomedIn.SetActive(true);
             CameraZoomedOut.SetActive(false);
@@ -131,6 +150,7 @@ public class GMechanism : MonoBehaviour
 
     public Node.Status StartingMuskets()
     {
+        Player.GetComponent<TTPlayerController>().canMove = true;
         gThreeMusketsScript.enabled = true;
         gMovementScript.enabled = true;
         ThreeMuskets.SetActive(true);

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1514467341688360901}
   - component: {fileID: 161261938623592578}
   - component: {fileID: 4720249843054243883}
+  - component: {fileID: 6940043239390685806}
   m_Layer: 0
   m_Name: GBullets
   m_TagString: Untagged
@@ -105,3 +106,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &6940043239390685806
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048087060832321613}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.38
