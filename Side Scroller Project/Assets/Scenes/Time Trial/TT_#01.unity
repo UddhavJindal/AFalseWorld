@@ -1281,6 +1281,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 8734062207896252069, guid: 2c4cc030df89aab48801fa5795ade49a, type: 3}
+      propertyPath: m_text
+      value: spikey
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734062207896252069, guid: 2c4cc030df89aab48801fa5795ade49a, type: 3}
+      propertyPath: m_fontStyle
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 8734062208270772965, guid: 2c4cc030df89aab48801fa5795ade49a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -8433,6 +8441,34 @@ PrefabInstance:
     - target: {fileID: 7368310642502308405, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368310643447910909, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1160492164}
+    - target: {fileID: 7368310643447910909, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SceneChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368310643447910909, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: TT_#01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368310643513082960, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1160492164}
+    - target: {fileID: 7368310643513082960, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368310643746903240, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1160492164}
+    - target: {fileID: 7368310643746903240, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}

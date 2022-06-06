@@ -35,6 +35,10 @@ public class TTPlayerController : MonoBehaviour
     public bool canMove;
     float jumpTimeCounter;
 
+    void Start()
+    {
+        Time.timeScale = 1;
+    }
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetpos.position, checkRadius, whatIsGround);

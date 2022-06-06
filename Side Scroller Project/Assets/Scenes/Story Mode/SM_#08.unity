@@ -1874,26 +1874,30 @@ PrefabInstance:
     - target: {fileID: 7368310643447910909, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 64887831}
+      objectReference: {fileID: 64887832}
     - target: {fileID: 7368310643447910909, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: SceneChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368310643447910909, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: SM_#08
       objectReference: {fileID: 0}
     - target: {fileID: 7368310643513082960, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 64887831}
+      objectReference: {fileID: 64887832}
     - target: {fileID: 7368310643513082960, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: BackToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7368310643746903240, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 64887831}
+      objectReference: {fileID: 64887832}
     - target: {fileID: 7368310643746903240, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: ResumeGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760f3c8d640ef2a4381b65b0c6cd8556, type: 3}

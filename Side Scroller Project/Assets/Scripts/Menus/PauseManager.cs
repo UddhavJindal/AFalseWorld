@@ -55,14 +55,14 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void SceneChanger(int sceneNum)
+    public void SceneChanger(string sceneName)
     {
-        SceneManager.LoadScene(sceneNum);
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void QuitGame()
+    public void BackToMenu()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
     #endregion
 }
