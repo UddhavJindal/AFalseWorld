@@ -10,6 +10,8 @@ public class TitleManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI GameTitle;
     [SerializeField] TextMeshProUGUI WarningTitle;
     [SerializeField] TextMeshProUGUI KeyStatus;
+    [SerializeField] GameObject NameMenu;
+    [SerializeField] TMP_InputField inputField;
 
     [Header("Settings")]
     [SerializeField] float fadeSpeed;
@@ -32,11 +34,13 @@ public class TitleManager : MonoBehaviour
         Leaf titleFade = new Leaf("Fading Title", TitleFade);
         Leaf disclaimer = new Leaf("Fading Title", Disclaimer);
         Leaf waitToStart = new Leaf("Wait", WaitToChangeScene);
+        Leaf nameMenu = new Leaf("Check Name", ShowingNameDialogue);
 
         titleManager.AddChild(starters);
         titleManager.AddChild(titleFade);
         titleManager.AddChild(disclaimer);
         titleManager.AddChild(waitToStart);
+        titleManager.AddChild(nameMenu);
 
         rootNode.AddChild(titleManager);
     }
@@ -45,6 +49,7 @@ public class TitleManager : MonoBehaviour
     {
         KeyStatus.gameObject.SetActive(false);
         WarningTitle.gameObject.SetActive(false);
+        NameMenu.SetActive(false);
         GameTitle.alpha = 0;
         currentAlphaValue = 0;
         maxAlphaValue = 1;
@@ -81,9 +86,33 @@ public class TitleManager : MonoBehaviour
     {
         if(Input.anyKey)
         {
-            SceneManager.LoadScene(SceneNumber);
+            return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
+    }
+
+    public Node.Status ShowingNameDialogue()
+    {
+        if(string.IsNullOrEmpty(PlayerPrefs.GetString("PlayerName")) || string.IsNullOrEmpty(PlayerPrefs.GetString("PlayerName")))
+        {
+            KeyStatus.gameObject.SetActive(false);
+            WarningTitle.gameObject.SetActive(false);
+            NameMenu.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneNumber);
+        }
+        return Node.Status.SUCCESS;
+    }
+
+    public void SavingName()
+    {
+        if(inputField.text != null)
+        {
+            PlayerPrefs.SetString("PlayerName" ,inputField.text);
+            SceneManager.LoadScene(SceneNumber);
+        }
     }
 
     private void Update()
