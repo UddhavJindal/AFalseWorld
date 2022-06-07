@@ -76,7 +76,7 @@ public class EShooting : MonoBehaviour
 
             angle += angleStep;
         }
-        CMShakeScript.Instance.CameraShake(2f, 0.1f);
+        //CMShakeScript.Instance.CameraShake(2f, 0.1f);
     }
 
     IEnumerator Fire()
